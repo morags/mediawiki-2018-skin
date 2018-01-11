@@ -1,12 +1,12 @@
 <?php
 /**
- * SkinTemplate class for the Example skin
+ * SkinTemplate class for the 2018 skin
  *
  * @ingroup Skins
  */
-class SkinExample extends SkinTemplate {
-	public $skinname = 'example', $stylename = 'Example',
-		$template = 'ExampleTemplate', $useHeadElement = true;
+class Skin2018 extends SkinTemplate {
+	public $skinname = '2018', $stylename = '2018',
+		$template = '2018Template', $useHeadElement = true;
 
 	/**
 	 * Add CSS via ResourceLoader
@@ -20,10 +20,10 @@ class SkinExample extends SkinTemplate {
 		$out->addModuleStyles( array(
 			'mediawiki.skinning.interface',
 			'mediawiki.skinning.content.externallinks',
-			'skins.example'
+			'skins.2018'
 		) );
 		$out->addModules( array(
-			'skins.example.js'
+			'skins.2018.js'
 		) );
 	}
 

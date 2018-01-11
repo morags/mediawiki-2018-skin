@@ -1,10 +1,10 @@
 <?php
 /**
- * BaseTemplate class for the Example skin
+ * BaseTemplate class for the 2018 skin
  *
  * @ingroup Skins
  */
-class ExampleTemplate extends BaseTemplate {
+class 2018Template extends BaseTemplate {
 	/**
 	 * Outputs the entire contents of the page
 	 */

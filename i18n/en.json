@@ -1,7 +1,7 @@
 {
-	"@metadata": {
-		"authors": [ "..." ]
-	},
-	"skinname-example": "Example",
-	"example-desc": "An example skin showcasing the best practices"
+    "@metadata": {
+        "authors": ["Morag S."]
+    },
+    "skinname-example": "2018",
+    "example-desc": "A contemporary theme utilizing off-the-shelf components for a clean UI and excellent readability"
 }

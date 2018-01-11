@@ -1,56 +1,44 @@
 {
-	"name": "Example",
-	"version": "1.0",
-	"author": "...",
-	"url": "https://www.mediawiki.org/wiki/Skin:Example",
-	"descriptionmsg": "example-desc",
-	"namemsg": "skinname-example",
-	"license-name": "CC0-1.0",
-	"type": "skin",
-	"ValidSkinNames": {
-		"example": "Example"
-	},
-	"MessagesDirs": {
-		"Example": [
-			"i18n"
-		]
-	},
-	"ResourceModules": {
-		"skins.example": {
-			"class": "ResourceLoaderSkinModule",
-			"position": "top",
-			"styles": {
-				"resources/libraries/normalise.css": {
-					"media": "screen"
-				},
-				"resources/screen-common.less": {
-					"media": "screen"
-				},
-				"resources/screen-desktop.less": {
-					"media": "screen and (min-width: 751px)"
-				},
-				"resources/screen-mobile.less": {
-					"media": "screen and (max-width: 750px)"
-				},
-				"resources/print.css": {
-					"media": "print"
-				}
-			}
-		},
-		"skins.example.js": {
-			"position": "bottom",
-			"scripts": [
-				"resources/main.js"
-			]
-		}
-	},
-	"ResourceFileModulePaths": {
-		"localBasePath": "",
-		"remoteSkinPath": "Example"
-	},
-	"AutoloadClasses": {
-		"SkinExample": "Example.skin.php",
-		"ExampleTemplate": "ExampleTemplate.php"
-	},
-	"manifest_version": 1
+    "name": "2018",
+    "version": "0.1",
+    "author": "Morag S.",
+    "url": "https://www.mediawiki.org/wiki/Skin:2018",
+    "descriptionmsg": "A contemporary theme utilizing off-the-shelf components for a clean UI and excellent article readability",
+    "namemsg": "skinname-2018",
+    "license-name": "MIT",
+    "type": "skin",
+    "ValidSkinNames": {
+        "2018": "2018"
+    },
+    "MessagesDirs": {
+        "2018": [
+            "i18n"
+        ]
+    },
+    "ResourceModules": {
+        "skins.2018": {
+            "class": "ResourceLoaderSkinModule",
+            "position": "top",
+            "styles": {
+                "resources/css/uikit.css": {
+                    "media": "screen"
+                },
+            }
+        },
+        "skins.2018.js": {
+            "position": "bottom",
+            "scripts": [
+                "resources/js/uikit.js"
+            ]
+        }
+    },
+    "ResourceFileModulePaths": {
+        "localBasePath": "",
+        "remoteSkinPath": "2018"
+    },
+    "AutoloadClasses": {
+        "Skin2018": "2018.skin.php",
+        "2018Template": "2018Template.php"
+    },
+    "manifest_version": 1
 }

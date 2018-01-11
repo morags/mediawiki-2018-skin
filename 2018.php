@@ -4,7 +4,7 @@
  * instead. See https://www.mediawiki.org/wiki/Manual:Extension_registration for more details.
  */
 if ( !function_exists( 'wfLoadSkin' ) ) {
-	die( 'The Example skin requires MediaWiki 1.25 or newer.' );
+	die( 'The 2018 skin requires MediaWiki 1.25 or newer.' );
 }
 
-wfLoadSkin( 'Example' );
+wfLoadSkin( '2018' );
