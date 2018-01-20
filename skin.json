@@ -22,7 +22,7 @@
             "styles": {
                 "resources/css/uikit.css": {
                     "media": "screen"
-                },
+                }
             }
         },
         "skins.2018.js": {
