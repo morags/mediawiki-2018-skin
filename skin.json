@@ -39,7 +39,7 @@
     },
     "AutoloadClasses": {
         "Skin2018": "2018.skin.php",
-        "2018Template": "2018Template.php"
+        "Skin2018Template": "2018Template.php"
     },
     "manifest_version": 1
 }

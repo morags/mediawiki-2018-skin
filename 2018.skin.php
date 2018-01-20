@@ -6,7 +6,7 @@
  */
 class Skin2018 extends SkinTemplate {
 	public $skinname = '2018', $stylename = '2018',
-		$template = '2018Template', $useHeadElement = true;
+		$template = 'Skin2018Template', $useHeadElement = true;
 
 	/**
 	 * Add CSS via ResourceLoader

@@ -4,7 +4,7 @@
  *
  * @ingroup Skins
  */
-class 2018Template extends BaseTemplate {
+class Skin2018Template extends BaseTemplate {
 	/**
 	 * Outputs the entire contents of the page
 	 */
