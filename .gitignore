@@ -1,3 +1,6 @@
+.vscode/
 node_modules/
 vendor/
+dev/
 composer.lock
+jsconfig.json
