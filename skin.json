@@ -20,7 +20,7 @@
             "class": "ResourceLoaderSkinModule",
             "position": "top",
             "styles": {
-                "resources/css/uikit.css": {
+                "resources/less/styles.less": {
                     "media": "screen"
                 }
             }
