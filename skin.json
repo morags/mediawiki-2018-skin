@@ -28,8 +28,8 @@
         "skins.2018.js": {
             "position": "bottom",
             "scripts": [
-                "resources/js/uikit.js",
-                "resources/js/uikit-icons.js"
+                "vendor/uikit/dist/js/uikit.js",
+                "vendor/uikit/dist/js/uikit-icons.js"
             ]
         }
     },
