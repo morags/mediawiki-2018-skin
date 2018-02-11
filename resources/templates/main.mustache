@@ -1,0 +1,85 @@
+<body>
+    {{! BUG: can't add classes to <body>, so using a wrapper div }}
+    <div id="body-wrapper" class="uk-grid uk-margin-auto uk-margin-top">
+        {{! Consume $data['bodycontent'] for later use }}
+        <script type="text/javascript">
+            window.addEventListener('load', function () {
+                $bodytext = $('<hidden></>').append($.parseHTML(`{{{bodycontent}}}`));
+            });
+        </script>
+        <header id="top-bar" class="uk-width-1-1 uk-grid uk-margin-bottom">
+            <div id="logo" class="uk-logo uk-margin-small-right">{{{logo}}}</div>
+            <div id="page-title" class="uk-margin-small-top uk-padding-remove uk-margin-small-left">
+                <h1 class="uk-margin-remove-bottom">{{title}}</h1>
+                <p class="uk-margin-remove-top uk-text-right" style="font-style: italic;">{{sitename}}</p>
+            </div>
+            <div class="uk-width-expand">
+                {{! filler }}
+            </div>
+            <div id="tools" class="uk-margin uk-grid">
+                <div id="user-tools">
+                    <a href="{{{userpageurl}}}">{{username}}</a>
+                </div>
+                <div id="page-tools">
+                    {{lastmod}}
+                </div>
+                <div id="site-search">
+                    <button class="uk-button uk-button-default uk-search-toggle" type="button" uk-toggle="#search>div" uk-search-icon></button>
+                    <div class="uk-padding-small" uk-dropdown="mode: click">
+                        <form class="uk-search" action="{{{searcaction}}}">
+                            {{! BUG: Search isn't working }}
+                            <span class="uk-search-icon-flip" uk-search-icon></span>
+                            <input class="uk-search-input" type="search" autofocus>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <nav id="left-col" class="uk-width-1-4">
+            {{! TODO: Change font-size responsively to fit smaller viewports }}
+            {{! TODO: Deal with text overflow / truncation }}
+            <script type="text/javascript">
+                window.addEventListener('load', function () {
+                    var $toc = $bodytext.find('#toc').appendTo($('#left-col'));
+                    $toc.addClass('uk-margin-small-left uk-height-1-1 uk-overflow-auto').attr('uk-sticky', '');
+                    $toc.find('h2').addClass('uk-nav-header uk-margin-remove-bottom uk-inline');
+                    $toc.find('.toctoggle').attr('hidden', '');
+                    $toc.find('>ul').addClass('uk-nav uk-nav-default uk-margin-remove-top').attr(
+                        'uk-scrollspy-nav', 'closest: li; scroll: true;'); // BUG: Scrollspy isn't working
+                    $toc.find('.toclevel-1').addClass('uk-parent');
+                    $toc.find('.toclevel-1>ul').addClass('uk-nav-sub');
+                });
+            </script>
+        </nav>
+        <main id="content" class="uk-width-1-2">
+            {{! TODO: Limit .mw-editsection visibility toggle to header width }}
+            {{! TODO: Add "Back to top" buttons to section headers }}
+            <script type="text/javascript">
+                window.addEventListener('load', function () {
+                    var $edit_markers = $bodytext.find('.mw-editsection');
+                    $edit_markers.addClass('uk-invisible-hover uk-text-middle');
+                    $edit_markers.parent().addClass('uk-visible-toggle');
+                    $edit_markers.find('>.mw-editsection-bracket').attr('hidden', '');
+                    $edit_markers.find('>a').attr('uk-icon', 'icon: pencil').text('');
+                    $('#content').append($bodytext[0].innerHTML);
+                });
+            </script>
+        </main>
+        <div id="right col" class="uk-width-1-4">
+            <div id="notifications">
+                <span id="notifications-toggle" class="uk-position-right uk-margin-right uk-margin-top" uk-toggle="target: #notifications-container"
+                    uk-icon="icon: info"></span>
+                {{! TODO: Add code to remove some of these and modify the namespace displayed in h1 for the rest (sp. policy, guideline and essay) }}
+                <div id="notifications-container" hidden>
+                    {{mw-indicators}} {{ombox-notice}} {{navbox}}
+                </div>
+            </div>
+        </div>
+        <div id="bottoms" class="uk-width-1-1">
+            <div class="uk-container">
+                <nav>{{{catlinks}}}</nav>
+                <div>{{{about}}} / {{{disclaimer}}} / {{{privacy}}}</div>
+            </div>
+        </div>
+    </div>
+</body>

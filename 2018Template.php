@@ -9,9 +9,15 @@ class Skin2018Template extends BaseTemplate {
 	 * Outputs the entire contents of the page
 	 */
 	public function execute() {
-		$html = '';
-		$html .= $this->get( 'headelement' );
-
+		echo $this->get( 'headelement' );	// Loads <head>
+		
+		$templateParser = new TemplateParser(  __DIR__ . '/resources/templates' );
+		
+		echo $templateParser->processTemplate(
+			'main', $this->data
+		);
+		
+		/*
 		$html .= Html::rawElement( 'div', [ 'id' => 'mw-wrapper' ],
 			Html::rawElement( 'div', [ 'class' => 'mw-body', 'role' => 'main' ],
 				$this->getSiteNotice() .
@@ -80,7 +86,7 @@ class Skin2018Template extends BaseTemplate {
 		$html .= Html::closeElement( 'body' );
 		$html .= Html::closeElement( 'html' );
 
-		echo $html;
+		echo $html; */
 	}
 
 	/**
