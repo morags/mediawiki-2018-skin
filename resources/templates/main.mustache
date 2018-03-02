@@ -1,5 +1,6 @@
 <body>
-    {{! BUG: can't add classes to <body>, so using a wrapper div }}
+    {{#prebodyhtml}}<div>{{{prebodyhtml}}}</div>{{/prebodyhtml}}
+    {{! WORKAROUND: can't add classes to <body>, so using a wrapper div }}
     <div id="body-wrapper" class="uk-grid uk-margin-auto uk-margin-top">
         {{! Consume $data['bodycontent'] for later use }}
         <script type="text/javascript">
@@ -7,6 +8,7 @@
                 $bodytext = $('<hidden></>').append($.parseHTML(`{{{bodycontent}}}`));
             });
         </script>
+        {{#sitenotice}}<div id="siteNotice" class="uk-width-1-1 uk-alert">{{{sitenotice}}}</div>{{/sitenotice}}
         <header id="top-bar" class="uk-width-1-1 uk-grid uk-margin-bottom">
             <div id="logo" class="uk-logo uk-margin-small-right">{{{logo}}}</div>
             <div id="page-title" class="uk-margin-small-top uk-padding-remove uk-margin-small-left">
@@ -14,25 +16,61 @@
                 <p class="uk-margin-remove-top uk-text-right" style="font-style: italic;">{{sitename}}</p>
             </div>
             <div class="uk-width-expand">
-                {{! filler }}
+                {{! filler to push #tools to the right }}
             </div>
-            <div id="tools" class="uk-margin uk-grid">
-                <div id="user-tools">
-                    <a href="{{{userpageurl}}}">{{username}}</a>
-                </div>
-                <div id="page-tools">
-                    {{lastmod}}
-                </div>
-                <div id="site-search">
-                    <button class="uk-button uk-button-default uk-search-toggle" type="button" uk-toggle="#search>div" uk-search-icon></button>
-                    <div class="uk-padding-small" uk-dropdown="mode: click">
-                        <form class="uk-search" action="{{{searcaction}}}">
-                            {{! BUG: Search isn't working }}
-                            <span class="uk-search-icon-flip" uk-search-icon></span>
-                            <input class="uk-search-input" type="search" autofocus>
-                        </form>
-                    </div>
-                </div>
+            <div id="tools" class="uk-navbar-container uk-navbar-transparent uk-padding-remove-left " uk-navbar>
+                <ul class="uk-navbar-nav">
+                    <li id="site-tools">
+                        <a href="{{{nav_urls.info.href}}}" title="{{nav_urls.info.text}}" uk-icon="icon: info"></a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                {{#sidebar.navigation}}<li><a href="{{{href}}}">{{text}}</a></li>{{/sidebar.navigation}}
+                                <li><a href="{{{nav_urls.specialpages.href}}}">Special Pages</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li id="page-tools">
+                        <a href="{{{content_navigation.views.edit.href}}}" title="{{content_navigation.views.edit.text}}" uk-icon="icon: pencil"></a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li>{{lastmod}}</li>
+                                <li><a href="{{{nav_urls.info.href}}}">{{nav_urls.info.text}}</a></li>
+                                <li><a href="{{{nav_urls.permalink.href}}}">{{nav_urls.permalink.text}}</a></li>    {{! TODO: Copy link to clipboard on click }}
+                                <li><a href="{{{nav_urls.print.href}}}">{{nav_urls.print.text}}</a></li>
+                                <li><a href="{{{content_navigation.views.view.href}}}">{{content_navigation.views.view.text}}</a></li>
+                                <li><a href="{{{content_navigation.namespaces.talk.href}}}">{{content_navigation.namespaces.talk.text}}</a></li>
+                                <li><a href="{{{content_navigation.views.history.href}}}">{{content_navigation.views.history.text}}</a></li>
+                                {{#each content_navigation.actions}}<li><a href="{{{href}}}">{{text}}</a></li>{{/content_navigation.actions}}
+                                {{#each watch_indicator}}<li><a href="{{{href}}}">{{text}}</a></li>{{/watch_indicator}}
+                                <li><a href="{{{nav_urls.upload.href}}}">Upload file</a></li>
+                                <li><a href="{{{nav_urls.whatlinkshere.href}}}">What links here</a></li>
+                                <li><a href="{{{nav_urls.recentchangeslinked.href}}}">Related changes</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li id="user-tools">
+                        <a href="{{{userpageurl}}}" title="{{userpage}}" uk-icon="icon: user"></a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                {{#each personal_urls}}<li><a href={{{href}}}>{{text}}</a></li>{{/personal_urls}}
+                                <div id="notifications-container">
+                                    {{! TODO: Add code to remove some of these and modify the namespace displayed in h1 for the rest (sp. policy, guideline and essay) }}
+                                    {{mw-indicators}} {{ombox-notice}} {{navbox}}
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li id="site-search">
+                        <a href="{{{searchaction}}}" title="{{searchtitle}}" uk-icon="icon: search"></a>
+                        <div class="uk-navbar-dropdown">
+                            <form class="uk-search" action="{{{searchaction}}}">
+                                <span class="uk-search-icon-flip" uk-search-icon></span>
+                                <input class="uk-search-input" type="search" name="search" placeholder="Search&hellip;" autofocus>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </header>
         <nav id="left-col" class="uk-width-1-4">
@@ -45,14 +83,14 @@
                     $toc.find('h2').addClass('uk-nav-header uk-margin-remove-bottom uk-inline');
                     $toc.find('.toctoggle').attr('hidden', '');
                     $toc.find('>ul').addClass('uk-nav uk-nav-default uk-margin-remove-top').attr(
-                        'uk-scrollspy-nav', 'closest: li; scroll: true;'); // BUG: Scrollspy isn't working
+                        'uk-scrollspy-nav', 'closest: li; scroll: true;'); // BUG: Scrollspy isn't working (uikit#3100)
                     $toc.find('.toclevel-1').addClass('uk-parent');
                     $toc.find('.toclevel-1>ul').addClass('uk-nav-sub');
                 });
             </script>
         </nav>
         <main id="content" class="uk-width-1-2">
-            {{! TODO: Limit .mw-editsection visibility toggle to header width }}
+            {{! TODO: Limit .mw-editsection visibility toggle to header width instead of page width }}
             {{! TODO: Add "Back to top" buttons to section headers }}
             <script type="text/javascript">
                 window.addEventListener('load', function () {
@@ -66,19 +104,27 @@
             </script>
         </main>
         <div id="right col" class="uk-width-1-4">
-            <div id="notifications">
-                <span id="notifications-toggle" class="uk-position-right uk-margin-right uk-margin-top" uk-toggle="target: #notifications-container"
-                    uk-icon="icon: info"></span>
-                {{! TODO: Add code to remove some of these and modify the namespace displayed in h1 for the rest (sp. policy, guideline and essay) }}
-                <div id="notifications-container" hidden>
-                    {{mw-indicators}} {{ombox-notice}} {{navbox}}
-                </div>
-            </div>
+
         </div>
-        <div id="bottoms" class="uk-width-1-1">
-            <div class="uk-container">
+        <div class="uk-width-1-4">
+            {{! WORKAROUND: uikit#2774 (see below) }}
+        </div>
+        <div id="bottom-bar" class="uk-width-1-2">
+            {{! BUG: uk-sticky="bottom: #bottom-bar" doesn't work, so #toc overlays #bottom-bar if it's long enough (uikit#2774) }}
+            <div class="uk-container uk-text-center">
                 <nav>{{{catlinks}}}</nav>
-                <div>{{{about}}} / {{{disclaimer}}} / {{{privacy}}}</div>
+                <div>{{{about}}} | {{{disclaimer}}} | {{{privacy}}}</div>
+                <div>
+                    {{#credits}}
+                        <span>{{{credits}}}</span>
+                    {{/credits}}
+                    {{#copyright}}
+                        <span>{{{copyrightico}}}{{{copyright}}}</span>
+                    {{/copyright}}
+                </div>
+                {{#credits}}
+                    <div>{{{poweredbyico}}}</div>
+                {{/credits}}
             </div>
         </div>
     </div>
