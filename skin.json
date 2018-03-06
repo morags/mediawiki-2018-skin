@@ -22,6 +22,9 @@
             "styles": {
                 "resources/less/styles.less": {
                     "media": "screen"
+                },
+                "resources/less/print.less": {
+                    "media": "print"
                 }
             }
         },
