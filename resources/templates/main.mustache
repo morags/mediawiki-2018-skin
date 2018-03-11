@@ -32,36 +32,44 @@
             <div class="uk-width-expand">
                 {{! filler to push #tools to the right }}
             </div>
-            <div id="tools" class="uk-navbar-container uk-navbar-transparent uk-padding-remove-left " uk-navbar>
+            <nav id="tools" class="uk-navbar-container uk-navbar-transparent uk-padding-remove-left " uk-navbar>
                 <ul class="uk-navbar-nav">
                     <li id="site-tools">
-                        <a href="{{{nav_urls.info.href}}}" title="{{nav_urls.info.text}}" uk-icon="icon: info"></a>
+                        <a href="{{{nav_urls.info.href}}}" title="{{nav_urls.info.text}}" uk-icon="icon: home"></a>
                         <div class="uk-navbar-dropdown">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                 {{#sidebar.navigation}}<li><a href="{{{href}}}">{{text}}</a></li>{{/sidebar.navigation}}
-                                <li><a href="{{{nav_urls.specialpages.href}}}">Special Pages</a></li>
                             </ul>
                         </div>
                     </li>
                     <li id="page-tools">
                         <a href="{{{content_navigation.views.edit.href}}}" title="{{content_navigation.views.edit.text}}" uk-icon="icon: pencil"></a>
-                        <div class="uk-navbar-dropdown">
+                        <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">     {{! BUG: uk-navbar-dropdown isn't 2-columns wide }}
                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                 <li>{{lastmod}}</li>
-                                <li><a href="{{{nav_urls.info.href}}}">{{nav_urls.info.text}}</a></li>
-                                <li><a href="{{{nav_urls.permalink.href}}}">{{nav_urls.permalink.text}}</a></li>    {{! TODO: Copy link to clipboard on click }}
-                                <li><a href="{{{nav_urls.print.href}}}">{{nav_urls.print.text}}</a></li>
-                                <li><a href="{{{content_navigation.views.view.href}}}">{{content_navigation.views.view.text}}</a></li>
-                                <li><a href="{{{content_navigation.namespaces.talk.href}}}">{{content_navigation.namespaces.talk.text}}</a></li>
-                                <li><a href="{{{content_navigation.views.history.href}}}">{{content_navigation.views.history.text}}</a></li>
-                                {{#each content_navigation.actions}}<li><a href="{{{href}}}">{{text}}</a></li>{{/content_navigation.actions}}
-                                {{#each watch_indicator}}<li><a href="{{{href}}}">{{text}}</a></li>{{/watch_indicator}}
-                                        <li><a id="copy-permalink" data-clipboard-text="{{{serverurl}}}{{{nav_urls.permalink.href}}}">{{nav_urls.permalink.text}}</a></li>
-                                <li><a href="{{{nav_urls.upload.href}}}">Upload file</a></li>
-                                <li><a href="{{{nav_urls.whatlinkshere.href}}}">What links here</a></li>
-                                <li><a href="{{{nav_urls.recentchangeslinked.href}}}">Related changes</a></li>
-
                             </ul>
+                            <div class="uk-navbar-dropdown-grid uk-child-width-1-2" uk-grid>
+                                <div>
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li><a href="{{{content_navigation.views.view.href}}}">{{content_navigation.views.view.text}}</a></li>
+                                        <li><a href="{{{content_navigation.namespaces.talk.href}}}">{{content_navigation.namespaces.talk.text}}</a></li>
+                                        <li><a href="{{{content_navigation.views.history.href}}}">{{content_navigation.views.history.text}}</a></li>
+                                        <li><a href="{{{nav_urls.info.href}}}">{{nav_urls.info.text}}</a></li>
+                                        <li><a href="{{{nav_urls.whatlinkshere.href}}}">What links here</a></li>
+                                        <li><a href="{{{nav_urls.recentchangeslinked.href}}}">Related changes</a></li>
+                                        <li><a href="{{{nav_urls.print.href}}}">{{nav_urls.print.text}}</a></li>
+                                        <li><a href="{{{nav_urls.specialpages.href}}}">Special Pages</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        {{#each watch_indicator}}<li><a href="{{{href}}}">{{text}}</a></li>{{/watch_indicator}}
+                                        <li><a id="copy-permalink" data-clipboard-text="{{{serverurl}}}{{{nav_urls.permalink.href}}}">{{nav_urls.permalink.text}}</a></li>
+                                        <li><a href="{{{nav_urls.upload.href}}}">Upload file</a></li>
+                                        {{#each content_navigation.actions}}<li><a href="{{{href}}}">{{text}}</a></li>{{/content_navigation.actions}}
+                                    </ul>
+                                </div>
+                            </div>                        
                         </div>
                     </li>
                     <li id="user-tools">
@@ -86,7 +94,7 @@
                         </div>
                     </li>
                 </ul>
-            </div>
+            </nav>
         </header>
         <nav id="left-col" class="uk-width-1-4">
             {{! TODO: Change font-size responsively to fit smaller viewports }}
