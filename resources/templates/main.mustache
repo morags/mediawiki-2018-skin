@@ -8,6 +8,20 @@
                 $bodytext = $('<hidden></>').append($.parseHTML(`{{{bodycontent}}}`));
             });
         </script>
+        {{! Permalink clipboard handling }}
+        <script type="text/javascript">
+            window.addEventListener('load', function () {
+                var clipboard = new ClipboardJS('#copy-permalink');
+
+                clipboard.on('success', function (e) {
+                    UIkit.tooltip('#copy-permalink', {'title': 'Copied link to clipboard!'}).show();
+                });
+
+                clipboard.on('error', function (e) {
+                    $('#copy-permalink').text(e.text);
+                });
+            });
+        </script>
         {{#sitenotice}}<div id="siteNotice" class="uk-width-1-1 uk-alert">{{{sitenotice}}}</div>{{/sitenotice}}
         <header id="top-bar" class="uk-width-1-1 uk-grid uk-margin-bottom">
             <div id="logo" class="uk-logo uk-margin-small-right">{{{logo}}}</div>
@@ -42,6 +56,7 @@
                                 <li><a href="{{{content_navigation.views.history.href}}}">{{content_navigation.views.history.text}}</a></li>
                                 {{#each content_navigation.actions}}<li><a href="{{{href}}}">{{text}}</a></li>{{/content_navigation.actions}}
                                 {{#each watch_indicator}}<li><a href="{{{href}}}">{{text}}</a></li>{{/watch_indicator}}
+                                        <li><a id="copy-permalink" data-clipboard-text="{{{serverurl}}}{{{nav_urls.permalink.href}}}">{{nav_urls.permalink.text}}</a></li>
                                 <li><a href="{{{nav_urls.upload.href}}}">Upload file</a></li>
                                 <li><a href="{{{nav_urls.whatlinkshere.href}}}">What links here</a></li>
                                 <li><a href="{{{nav_urls.recentchangeslinked.href}}}">Related changes</a></li>
