@@ -66,7 +66,9 @@
                                         {{#each watch_indicator}}<li><a href="{{{href}}}">{{text}}</a></li>{{/watch_indicator}}
                                         <li><a id="copy-permalink" data-clipboard-text="{{{serverurl}}}{{{nav_urls.permalink.href}}}">{{nav_urls.permalink.text}}</a></li>
                                         <li><a href="{{{nav_urls.upload.href}}}">Upload file</a></li>
-                                        {{#each content_navigation.actions}}<li><a href="{{{href}}}">{{text}}</a></li>{{/content_navigation.actions}}
+                                        <li><a href="{{{content_navigation.actions.move.href}}}">{{content_navigation.actions.move.text}}</a></li>
+                                        <li><a href="{{{content_navigation.actions.protect.href}}}">{{content_navigation.actions.protect.text}}</a></li>
+                                        <li><a href="{{{content_navigation.actions.delete.href}}}">{{content_navigation.actions.delete.text}}</a></li>
                                     </ul>
                                 </div>
                             </div>                        
@@ -76,7 +78,12 @@
                         <a href="{{{userpageurl}}}" title="{{userpage}}" uk-icon="icon: user"></a>
                         <div class="uk-navbar-dropdown">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
-                                {{#each personal_urls}}<li><a href={{{href}}}>{{text}}</a></li>{{/personal_urls}}
+                                <li><a href="{{{personal_urls.userpage.href}}}">{{personal_urls.userpage.text}}</a></li>
+                                <li><a href="{{{personal_urls.mytalk.href}}}">{{personal_urls.mytalk.text}}</a></li>
+                                <li><a href="{{{personal_urls.watchlist.href}}}">{{personal_urls.watchlist.text}}</a></li>
+                                <li><a href="{{{personal_urls.mycontris.href}}}">{{personal_urls.mycontris.text}}</a></li>
+                                <li><a href="{{{personal_urls.preferences.href}}}">{{personal_urls.preferences.text}}</a></li>
+                                <li><a href="{{{personal_urls.logout.href}}}">{{personal_urls.logout.text}}</a></li>
                                 <div id="notifications-container">
                                     {{! TODO: Add code to remove some of these and modify the namespace displayed in h1 for the rest (sp. policy, guideline and essay) }}
                                     {{mw-indicators}} {{ombox-notice}} {{navbox}}
