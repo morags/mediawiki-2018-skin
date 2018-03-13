@@ -1,5 +1,5 @@
 <body>
-    {{#prebodyhtml}}<div>{{{prebodyhtml}}}</div>{{/prebodyhtml}}
+    {{#if prebodyhtml}}<div>{{{prebodyhtml}}}</div>{{/if}}
     {{! WORKAROUND: can't add classes to <body>, so using a wrapper div }}
     <div id="body-wrapper" class="uk-grid uk-margin-auto uk-margin-top">
         {{! Consume $data['bodycontent'] for later use }}
@@ -22,7 +22,7 @@
                 });
             });
         </script>
-        {{#sitenotice}}<div id="siteNotice" class="uk-width-1-1 uk-alert">{{{sitenotice}}}</div>{{/sitenotice}}
+        {{#if sitenotice}}<div id="siteNotice" class="uk-width-1-1 uk-alert">{{{sitenotice}}}</div>{{/if}}
         <header id="top-bar" class="uk-width-1-1 uk-grid uk-margin-bottom">
             <div id="logo" class="uk-logo uk-margin-small-right">{{{logo}}}</div>
             <div id="page-title" class="uk-margin-small-top uk-padding-remove uk-margin-small-left">
@@ -144,17 +144,12 @@
             <div class="uk-container uk-text-center">
                 <nav>{{{catlinks}}}</nav>
                 <div>{{{about}}} | {{{disclaimer}}} | {{{privacy}}}</div>
+                {{! TODO: Incorporate <div> into the conditional instead of always displaying it }}
                 <div>
-                    {{#credits}}
-                        <span>{{{credits}}}</span>
-                    {{/credits}}
-                    {{#copyright}}
-                        <span>{{{copyrightico}}}{{{copyright}}}</span>
-                    {{/copyright}}
+                    {{#if credits}}<span>{{{credits}}}</span>{{/if}}
+                    {{#if copyright}}<span>{{{copyrightico}}}{{{copyright}}}</span>{{/if}}
                 </div>
-                {{#credits}}
-                    <div>{{{poweredbyico}}}</div>
-                {{/credits}}
+                {{#if credits}}<div>{{{poweredbyico}}}</div>{{/if}}
             </div>
         </div>
     </div>
