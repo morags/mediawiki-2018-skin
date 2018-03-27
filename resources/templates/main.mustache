@@ -129,15 +129,20 @@
             {{! TODO: Limit .mw-editsection visibility toggle to header width instead of page width }}
             {{! TODO: Add "Back to top" buttons to section headers }}
             <script type="text/javascript">
+                // Format content
                 window.addEventListener('load', function () {
+                    {{#if notspecialpage}}
+                    // Convert edit links to icons
                     var $edit_markers = $bodytext.find('.mw-editsection');
                     $edit_markers.addClass('uk-invisible-hover uk-text-middle');
                     $edit_markers.parent().addClass('uk-visible-toggle');
                     $edit_markers.find('>.mw-editsection-bracket').attr('hidden', '');
                     $edit_markers.find('>a').attr('uk-icon', 'icon: pencil').text('');
-                    $('#content').append($bodytext[0].innerHTML);
+                    {{/if}}
+                    $('#content-placerholder').replaceWith($bodytext[0].innerHTML);
                 });
             </script>
+            <div id="content-placerholder" hidden></div>
             {{#if subtitle}}<div class="uk-width-1-1 uk-text-center uk-text-small">{{{subtitle}}}</div>{{/if}}      {{! TODO: Check if this can be moved somewhere else, eg. as a tools listing }}
             {{#if catlinks}}<nav>{{{catlinks}}}</nav>{{/if}}                                                        {{! TODO: Move category links to side- or toolbar }}
             {{#if dataAfterContent}}<div>{{{dataAfterContent}}}</div>{{/if}}
