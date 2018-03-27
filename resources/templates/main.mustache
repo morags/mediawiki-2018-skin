@@ -1,4 +1,5 @@
 <body>
+    {{! TODO: RTL version conditional on $data['rtl'] }}
     {{#if prebodyhtml}}<div>{{{prebodyhtml}}}</div>{{/if}}
     {{! WORKAROUND: can't add classes to <body>, so using a wrapper div }}
     <div id="body-wrapper" class="uk-grid uk-margin-auto uk-margin-top">
@@ -31,6 +32,7 @@
             <div class="uk-width-expand">
                 {{! filler to push #tools to the right }}
             </div>
+            {{! TODO: Integrate $data['language_urls'] conditionally as a dropdown list }}
             <nav id="tools" class="uk-navbar-container uk-navbar-transparent uk-padding-remove-left " uk-navbar>
                 <ul class="uk-navbar-nav">
                     <li id="site-tools">
@@ -76,7 +78,7 @@
                         </div>
                     </li>
                     <li id="user-tools">
-                        <a href="{{{userpageurl}}}" title="{{userpage}}" uk-icon="icon: user"></a>
+                        <a href="{{{userpageurl}}}" title="{{userpage}}" uk-icon="icon: user"></a>      {{! TODO: Add notification for new talk page messages (using $data['newtalk']) }}
                         <div class="uk-navbar-dropdown">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                 <li><a href="{{{personal_urls.userpage.href}}}">{{personal_urls.userpage.text}}</a></li>
