@@ -153,7 +153,8 @@
         <div class="uk-width-1-4">
             {{! WORKAROUND: uikit#2774 (see below) }}
         </div>
-        <div id="bottom-bar" class="uk-width-1-2">
+        <div id="bottom-bar" class="uk-width-1-2 uk-margin-small-top">
+            <hr class="uk-divider-icon uk-margin-small-bottom">
             {{! BUG: uk-sticky="bottom: #bottom-bar" doesn't work, so #toc overlays #bottom-bar if it's long enough (uikit#2774) }}
             <div class="uk-container uk-text-center">
                 <div>{{{about}}} | {{{disclaimer}}} | {{{privacy}}}</div>
