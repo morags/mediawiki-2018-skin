@@ -22,7 +22,6 @@
                 });
             });
         </script>
-        {{#if sitenotice}}<div id="siteNotice" class="uk-width-1-1 uk-alert">{{{sitenotice}}}</div>{{/if}}
         <header id="top-bar" class="uk-width-1-1 uk-grid uk-margin-bottom">
             <div id="logo" class="uk-logo uk-margin-small-right">{{{logo}}}</div>
             <div id="page-title" class="uk-margin-small-top uk-padding-remove uk-margin-small-left">
@@ -45,6 +44,8 @@
                     <li id="page-tools">
                         <a href="{{{content_navigation.views.edit.href}}}" title="{{content_navigation.views.edit.text}}" uk-icon="icon: pencil"></a>
                         <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">     {{! BUG: uk-navbar-dropdown isn't 2-columns wide }}
+                            {{! TODO: Add code to remove some of these and modify the namespace displayed in h1 for the rest (sp. policy, guideline and essay) }}
+                            {{#if indicators}}<div uk-grid>{{{indicators}}}</div>{{/if}}
                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                 <li>{{lastmod}}</li>
                             </ul>
@@ -84,10 +85,6 @@
                                 <li><a href="{{{personal_urls.mycontris.href}}}">{{personal_urls.mycontris.text}}</a></li>
                                 <li><a href="{{{personal_urls.preferences.href}}}">{{personal_urls.preferences.text}}</a></li>
                                 <li><a href="{{{personal_urls.logout.href}}}">{{personal_urls.logout.text}}</a></li>
-                                <div id="notifications-container">
-                                    {{! TODO: Add code to remove some of these and modify the namespace displayed in h1 for the rest (sp. policy, guideline and essay) }}
-                                    {{mw-indicators}} {{ombox-notice}} {{navbox}}
-                                </div>
                             </ul>
                         </div>
                     </li>
@@ -120,6 +117,8 @@
             </script>
         </nav>
         <main id="content" class="uk-width-1-2">
+            {{#if sitenotice}}<div class="uk-width-1-1 uk-alert">{{{sitenotice}}}</div>{{/if}}
+            {{#if undelete}}<div class="uk-width-1-1 uk-alert">{{{undelete}}}</div>{{/if}}      {{! TODO: Figure out what this does }}
             {{! TODO: Limit .mw-editsection visibility toggle to header width instead of page width }}
             {{! TODO: Add "Back to top" buttons to section headers }}
             <script type="text/javascript">
@@ -132,6 +131,9 @@
                     $('#content').append($bodytext[0].innerHTML);
                 });
             </script>
+            {{#if subtitle}}<div class="uk-width-1-1 uk-text-center uk-text-small">{{{subtitle}}}</div>{{/if}}      {{! TODO: Check if this can be moved somewhere else, eg. as a tools listing }}
+            {{#if catlinks}}<nav>{{{catlinks}}}</nav>{{/if}}                                                        {{! TODO: Move category links to side- or toolbar }}
+            {{#if dataAfterContent}}<div>{{{dataAfterContent}}}</div>{{/if}}
         </main>
         <div id="right col" class="uk-width-1-4">
 
@@ -142,7 +144,6 @@
         <div id="bottom-bar" class="uk-width-1-2">
             {{! BUG: uk-sticky="bottom: #bottom-bar" doesn't work, so #toc overlays #bottom-bar if it's long enough (uikit#2774) }}
             <div class="uk-container uk-text-center">
-                <nav>{{{catlinks}}}</nav>
                 <div>{{{about}}} | {{{disclaimer}}} | {{{privacy}}}</div>
                 {{! TODO: Incorporate <div> into the conditional instead of always displaying it }}
                 <div>
