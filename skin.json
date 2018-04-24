@@ -33,7 +33,8 @@
             "scripts": [
                 "vendor/uikit/dist/js/uikit.js",
                 "vendor/uikit/dist/js/uikit-icons.js",
-                "vendor/clipboard.js/dist/clipboard.js"
+                "vendor/clipboard.js/dist/clipboard.js",
+                "resources/js/contentTransformation.js"
             ]
         }
     },

@@ -9,20 +9,6 @@
                 $bodytext = $('<hidden></>').append($.parseHTML(`{{{bodycontent}}}`));
             });
         </script>
-        {{! Permalink clipboard handling }}
-        <script type="text/javascript">
-            window.addEventListener('load', function () {
-                var clipboard = new ClipboardJS('#copy-permalink');
-
-                clipboard.on('success', function (e) {
-                    UIkit.tooltip('#copy-permalink', {'title': 'Copied link to clipboard!'}).show();
-                });
-
-                clipboard.on('error', function (e) {
-                    $('#copy-permalink').text(e.text);
-                });
-            });
-        </script>
         <header id="top-bar" class="uk-width-1-1 uk-grid uk-margin-bottom">
             <div id="logo" class="uk-logo uk-margin-small-right">{{{logo}}}</div>
             <div id="page-title" class="uk-margin-small-top uk-padding-remove uk-margin-small-left">
@@ -103,27 +89,6 @@
             </nav>
         </header>
         <nav id="left-col" class="uk-width-1-4">
-            {{! TODO: Change font-size responsively to fit smaller viewports }}
-            {{! TODO: Deal with text overflow / truncation }}
-            <script type="text/javascript">
-                // Format TOC
-                window.addEventListener('load', function () {
-                    {{#if notspecialpage}}
-                    var $toc = $bodytext.find('#toc').appendTo($('#left-col'));
-                    $toc.addClass('uk-margin-small-left uk-height-1-1 uk-overflow-auto').attr('uk-sticky', '');
-                    $toc.find('h2').addClass('uk-nav-header uk-margin-remove-bottom uk-inline');
-                    $toc.find('.toctoggle').attr('hidden', '');
-                    $toc.find('>ul').addClass('uk-nav uk-nav-default uk-margin-remove-top')
-                        .attr('uk-scrollspy-nav', 'closest: li; scroll: true;'); // BUG: Scrollspy isn't working (uikit#3100)
-                    $toc.find('.toclevel-1').addClass('uk-parent');
-                    $toc.find('.toclevel-1>ul').addClass('uk-nav-sub');
-                    {{else}}
-                    var $toc = $bodytext.find('#preftoc').appendTo($('#left-col'))
-                        .prepend('<h2 class="uk-nav-header uk-margin-remove-bottom uk-inline">What would you like to change?</h>')  {{! A change of tone from the otherwise technical MediaWiki }}
-                        .addClass('uk-margin-small-left uk-height-1-1 uk-nav uk-nav-default').attr('uk-sticky', '');
-                    {{/if}}
-                });
-            </script>
         </nav>
         <main id="content" class="uk-width-1-2">
             {{#if sitenotice}}<div class="uk-width-1-1 uk-alert">{{{sitenotice}}}</div>{{/if}}
@@ -131,18 +96,9 @@
             {{! TODO: Limit .mw-editsection visibility toggle to header width instead of page width }}
             {{! TODO: Add "Back to top" buttons to section headers }}
             <script type="text/javascript">
-                // Format content
-                window.addEventListener('load', function () {
-                    {{#if notspecialpage}}
-                    // Convert edit links to icons
-                    var $edit_markers = $bodytext.find('.mw-editsection');
-                    $edit_markers.addClass('uk-invisible-hover uk-text-middle');
-                    $edit_markers.parent().addClass('uk-visible-toggle');
-                    $edit_markers.find('>.mw-editsection-bracket').attr('hidden', '');
-                    $edit_markers.find('>a').attr('uk-icon', 'icon: pencil').text('');
-                    {{/if}}
-                    $('#content-placerholder').replaceWith($bodytext[0].innerHTML);
-                });
+            window.addEventListener('load', function () {
+                $('#content-placerholder').replaceWith($bodytext[0].innerHTML);
+            });
             </script>
             <div id="content-placerholder" hidden></div>
             {{#if subtitle}}<div class="uk-width-1-1 uk-text-center uk-text-small">{{{subtitle}}}</div>{{/if}}      {{! TODO: Check if this can be moved somewhere else, eg. as a tools listing }}
