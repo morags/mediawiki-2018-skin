@@ -3,12 +3,6 @@
     {{#if prebodyhtml}}<div>{{{prebodyhtml}}}</div>{{/if}}
     {{! WORKAROUND: can't add classes to <body>, so using a wrapper div }}
     <div id="body-wrapper" class="uk-grid uk-margin-auto uk-margin-top">
-        {{! Consume $data['bodycontent'] for later use }}
-        <script type="text/javascript">
-            window.addEventListener('load', function () {
-                $bodytext = $('<hidden></>').append($.parseHTML(`{{{bodycontent}}}`));
-            });
-        </script>
         <header id="top-bar" class="uk-width-1-1 uk-grid uk-margin-bottom">
             <div id="logo" class="uk-logo uk-margin-small-right">{{{logo}}}</div>
             <div id="page-title" class="uk-margin-small-top uk-padding-remove uk-margin-small-left">
@@ -77,6 +71,7 @@
                         </div>
                     </li>
                     <li id="site-search">
+                        {{! TODO: Add option to search current article with prefix:\{\{\{title\}\}\}/ }}
                         <a href="{{{searchaction}}}" title="{{searchtitle}}" uk-icon="icon: search"></a>
                         <div class="uk-navbar-dropdown">
                             <form id="searchform" class="uk-search" action="{{{searchaction}}}">
@@ -95,14 +90,9 @@
             {{#if undelete}}<div class="uk-width-1-1 uk-alert">{{{undelete}}}</div>{{/if}}      {{! TODO: Figure out what this does }}
             {{! TODO: Limit .mw-editsection visibility toggle to header width instead of page width }}
             {{! TODO: Add "Back to top" buttons to section headers }}
-            <script type="text/javascript">
-            window.addEventListener('load', function () {
-                $('#content-placerholder').replaceWith($bodytext[0].innerHTML);
-            });
-            </script>
-            <div id="content-placerholder" hidden></div>
-            {{#if subtitle}}<div class="uk-width-1-1 uk-text-center uk-text-small">{{{subtitle}}}</div>{{/if}}      {{! TODO: Check if this can be moved somewhere else, eg. as a tools listing }}
-            {{#if catlinks}}<nav>{{{catlinks}}}</nav>{{/if}}                                                        {{! TODO: Move category links to side- or toolbar }}
+            {{{bodycontent}}}
+            {{#if subtitle}}<div class="uk-width-1-1 uk-text-center uk-text-small">{{{subtitle}}}</div>{{/if}}                                  {{! TODO: Check if this can be moved somewhere else, eg. as a tools listing }}
+            {{#if catlinks}}<nav>{{{catlinks}}}</nav>{{/if}}                                                                                    {{! TODO: Move category links to side- or toolbar }}
             {{#if dataAfterContent}}<div>{{{dataAfterContent}}}</div>{{/if}}
         </main>
         <div id="right col" class="uk-width-1-4">

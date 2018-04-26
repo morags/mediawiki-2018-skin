@@ -18,8 +18,8 @@ window.addEventListener('load', function () {
 // TODO: Deal with text overflow / truncation of text
 window.addEventListener('load', function () {
     // Article TOC
-    if ($bodytext[0].querySelector('#toc')) {
-        var $toc = $bodytext.find('#toc');
+    if (document.querySelector('#toc')) {
+        var $toc = $('#toc');
         $toc.appendTo($('#left-col'));
         $toc.addClass('uk-margin-small-left uk-height-1-1 uk-overflow-auto').attr('uk-sticky', '');
         $toc.find('h2').addClass('uk-nav-header uk-margin-remove-bottom uk-inline');
@@ -30,8 +30,8 @@ window.addEventListener('load', function () {
         $toc.find('.toclevel-1>ul').addClass('uk-nav-sub');
     }
     // User preferences TOC
-    else if ($bodytext[0].querySelector('#preftoc')) {
-        var $toc = $bodytext.find('#preftoc');
+    else if (document.querySelector('#preftoc')) {
+        var $toc = $('#preftoc');
         $toc.appendTo($('#left-col'))
             .prepend('<h2 class="uk-nav-header uk-margin-remove-bottom uk-inline">What would you like to change?</h>') // A change of tone from the otherwise technical MediaWiki
             .addClass('uk-margin-small-left uk-height-1-1 uk-nav uk-nav-default').attr('uk-sticky', '');
@@ -40,8 +40,8 @@ window.addEventListener('load', function () {
 
 /* Convert edit links to icons */
 window.addEventListener('load', function () {
-    if ($bodytext[0].querySelector('.mw-editsection')) {
-        var $edit_markers = $bodytext.find('.mw-editsection');
+    if (document.querySelector('.mw-editsection')) {
+        var $edit_markers = $('.mw-editsection');
         $edit_markers.addClass('uk-invisible-hover uk-text-middle');
         $edit_markers.parent().addClass('uk-visible-toggle');
         $edit_markers.find('>.mw-editsection-bracket').attr('hidden', '');
