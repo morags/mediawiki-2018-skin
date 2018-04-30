@@ -99,23 +99,30 @@ window.addEventListener('load', function () {
         $table.children().wrapAll('<tbody />');
 
         // Add headings
+        // WORKAROUND: 'Change size' should span two columns ('.minoredit' and '.mw-plusminus-*'), but Tablesorter doesn't handle 'colspan' well. Instead, an empty header is added just before to accomodate for '.minoredit'.
         $table.prepend(' \
             <thead> \
             <tr>    \
                 <th>Editor</th> \
                 <th>Time</th>   \
-                <th colspan=3>Change size (Total)</th>  \
-                <th>Comment</th>  \
-                <th colspan=3>Tools</th>    \
+                <th class=parser-false sorter-false></th>   \
+                <th>Change</th>  \
+                <th>(Total)</th>    \
+                <th>Comment</th>    \
+                <th colspan=3 class=parser-false sorter-false>Tools</th>    \
             </tr>   \
             </thead>    \
         ');
 
         // Style
-        $table = $('table').addClass('uk-table uk-table-divider uk-table-hover uk-table-justify uk-table-small uk-text-small');
+        // FIX: For some reason Tablersorter's css disrupt uk-table-hover
+        $table = $('table').addClass('uk-table uk-table-divider uk-table-hover uk-table-justify uk-table-small uk-text-small tablesorter');
 
         // TODO: Add more tools to the history tools menu (next to the "undo")
         
+        // TODO: Make sure this sorts properly at the beginning of a month
+        $table.tablesorter();
+      
     };
 });
 

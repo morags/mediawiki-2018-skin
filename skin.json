@@ -34,6 +34,8 @@
                 "vendor/uikit/dist/js/uikit.js",
                 "vendor/uikit/dist/js/uikit-icons.js",
                 "vendor/clipboard.js/dist/clipboard.js",
+                "vendor/jquery/jquery-3.3.1.js",
+                "vendor/tablesorter/dist/js/jquery.tablesorter.js",
                 "resources/js/contentTransformation.js"
             ]
         }

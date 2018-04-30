@@ -1,5 +1,6 @@
 // Import UIkit
 @import "../../vendor/uikit/src/less/uikit.theme.less";     // TODO: Check about importing uikit.less instead
+@import (inline) "../../vendor/tablesorter/css/theme.default.css";
 
 #site-search form input {
     border-bottom: 1px solid @global-border;
@@ -10,6 +11,18 @@
 }
 
 .hook-table-small() {
+    // WORKAROUND: Tablesorter messes up with the fonts; this is taken directly from uikit/src/less/components/base
+    font-family: @base-body-font-family;
+    font-size: @base-body-font-size;
+    font-weight: @base-body-font-weight;
+    line-height: @base-body-line-height;
+    /* 2 */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    /* 3 */
+    background: @base-body-background;
+    color: @base-body-color;
+
+    .uk-text-small();
     padding: 1px;
 }
-
