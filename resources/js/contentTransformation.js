@@ -50,18 +50,74 @@ window.addEventListener('load', function () {
 });
 
 /* Reformat history pages */
-// TODO: Finish this
-// window.addEventListener('load', function () {
-//     $('ul').replaceWith(function () {
-//         return $("<table />").append($(this).contents());
-//     });
-//     $('li').replaceWith(function () {
-//         return $("<tr />").append($(this).contents());
-//     });
-//     $('span').replaceWith(function () {
-//         return $("<td />").append($(this).contents());
-//     });
-// });
+window.addEventListener('load', function () {
+    if (document.getElementById('mw-history-compare')) {
+
+        // Create table
+        $('#mw-history-compare ul').replaceWith(function () {
+            return $('<table id="pagehistory" />').append($(this).contents());
+        });
+
+        var $table = $('table');
+
+        // Select and transform cells
+        var re = /\(|\)/g;
+        var s = function (context, query, transform = 0) {
+            var res = $(context).find(query);
+            // jQuery returns 'undefined' if it can't find an object, eg. '.minoredit' or '.comment'
+            if (res[0] != undefined) {
+                if (transform == 1) {
+                    // Remove parentheses from bytes
+                    return res[0].outerHTML.replace(re, '');
+                } else if (transform == 2) {
+                    // Reverse date formatting
+                    var date = res.text().split(', ');
+                    var fixed_date = [date[1], date[0]].join(', ');
+                    res.text(fixed_date);
+                    return res[0].outerHTML;
+                };
+                return res[0].outerHTML;
+            };
+            // Has to return something to the template literal
+            return '';
+        };
+
+        $table.children().replaceWith(function () {
+            return `<tr>
+                        <td>${s(this, '.mw-userlink')}<div class="uk-padding-small uk-text-center" uk-dropdown>${s(this, '.mw-usertoollinks')}<\/div></td>
+                        <td>${s(this, '.mw-changeslist-date', 2)}</td>
+                        <td>${s(this, '.minoredit')}</td>
+                        <td>${s(this, '.mw-plusminus-pos', 1)}${s(this, '.mw-plusminus-neg', 1)}</td>
+                        <td>${s(this, '.history-size')}</td>
+                        <td>${s(this, '.comment')}</td>
+                        <td>${s(this, '.mw-history-histlinks')}</td>
+                        <td><span>${$(this).find('input')[0].outerHTML}</span><span>${$(this).find('input')[1].outerHTML}</span></td>
+                        <td><span uk-icon="icon: cog"></span><div class="uk-padding-small uk-text-center" uk-dropdown>${s(this, '.mw-history-undo')}</div></td>
+                    </tr>
+                    `
+        });
+        $table.children().wrapAll('<tbody />');
+
+        // Add headings
+        $table.prepend(' \
+            <thead> \
+            <tr>    \
+                <th>Editor</th> \
+                <th>Time</th>   \
+                <th colspan=3>Change size (Total)</th>  \
+                <th>Comment</th>  \
+                <th colspan=3>Tools</th>    \
+            </tr>   \
+            </thead>    \
+        ');
+
+        // Style
+        $table = $('table').addClass('uk-table uk-table-divider uk-table-hover uk-table-justify uk-table-small uk-text-small');
+
+        // TODO: Add more tools to the history tools menu (next to the "undo")
+        
+    };
+});
 
 /* Preview Wikilinks */
 // TODO: Finish this
