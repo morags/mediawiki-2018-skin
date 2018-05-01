@@ -127,28 +127,39 @@ window.addEventListener('load', function () {
 });
 
 /* Preview Wikilinks */
-// TODO: Finish this
-// window.addEventListener('load', function () {
-//     var $wikilinks = $bodytext.find('a[href^="/wiki/"], a[href^="/mediawiki/"]');
-//     var $policies = $wikilinks.find('a[title^="WP:"], a[title^="Wikipedia:"]');
-//     $wikilinks.after(' \
-//                     <div uk-dropdown> \
-//                         <h2></h2> \
-//                         <p>Loading summary...</p> \
-//                     </div>');
+window.addEventListener('load', function () {
+    var own = top.location.host.toString();
+    var mothership = 'en.wikipedia.org';
 
-//     $wikilinks.hover(getSummary);
+    var $wikilinks = $('#content').find('a[href^="' + own + '"], a[href^="http://' + own + '"], \
+    a[href^="https://' + own + '"], a[href^="' + mothership + '"], a[href^="http://' + mothership + '"], \
+    a[href^="https://' + mothership + '"], a[href^="/"], a[href^="./"], a[href^="../"], a[href^="#"]');
 
-//     function getSummary() {
-//         res = $.getJSON('https://en.wikipedia.org/api/rest_v1/page/summary/' + $(this)[0].title, jsonSuccess(data), jsonFailure(data));
+    var $policies = $wikilinks.filter('a[title^="WP:"], a[title^="Wikipedia:"], a[title^="wikipedia:"]');
 
-//         function jsonSuccess(res) {
-//             $(this).find('div h1').html(res.responseJSON.title);
-//             $(this).find('div p').html(res.responseJSON.extract);
-//         }
+    $wikilinks.each(function () {
+        $(this).after(' \
+                    <div class="uk-padding-small" uk-dropdown> \
+                        <h2 class="uk-h4"></h2> \
+                        <p>Loading summary...</p> \
+                    </div>');
+    });
 
-//         function jsonFailure(res) {
-//             $(this).find('div p').html('Article ' + $(this)[0].title + ' not found!'); // TODO: Better error handling
-//         }
-//     };
-// });
+    $wikilinks.hover(getSummary);
+
+    function getSummary() {
+        var caller = $(this).next();
+
+        $.getJSON('https://en.wikipedia.org/api/rest_v1/page/summary/' + $(this)[0].title)
+        .done(function (res) {
+            caller.find('h2').html(res.title);
+            if (res.type != 'no-extract') {
+                caller.find('p').html(res.extract);
+            };
+            caller.find('p').html('No extract available!');     // TODO: Add "warning" icon for policy pages, and "info" icon for guideline pages
+        })
+        .fail(function (res, status, err) {
+            caller.find('p').html('Article not found!<br>Reason: ' + status + ', ' + err);
+        });
+    };
+});
