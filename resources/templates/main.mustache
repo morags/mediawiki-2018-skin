@@ -1,10 +1,12 @@
 <body>
+    {{! TODO: Replace UIkit with something that's more CSS and less JS, for better default usability https://github.com/troxler/awesome-css-frameworks }}
     {{! TODO: Better mermaid integration to remove need for <pre> tags }}
     {{! TODO: Better image handling to prevent overrun }}
     {{! TODO: RTL version conditional on $data['rtl'] }}
     {{#if prebodyhtml}}<div>{{{prebodyhtml}}}</div>{{/if}}
     {{! WORKAROUND: can't add classes to <body>, so using a wrapper div }}
     <div id="body-wrapper" class="uk-grid uk-margin-auto">
+        {{! TODO: Convert top-bar to 'sticky' }}
         <header id="top-bar" class="uk-width-1-1 uk-grid uk-margin-bottom">
             <div class="uk-width-expand">
                 {{! filler to push #logo and #page-title to the right }}
@@ -21,6 +23,7 @@
                 {{! filler to push #tools to the right }}
             </div>
             {{! TODO: Integrate $data['language_urls'] conditionally as a dropdown list }}
+            {{! TODO: Restrucutre menus for JS-less clients using <noscript> tags}}
             <nav id="tools" class="uk-navbar-container uk-navbar-transparent uk-padding-remove-left " uk-navbar>
                 <ul class="uk-navbar-nav">
                     <li id="site-tools">

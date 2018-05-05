@@ -49,6 +49,9 @@ window.addEventListener('load', function () {
     }
 });
 
+// TODO: Split article to <section> elements
+// TODO: Add 'to top' markers to section ends
+
 /* Reformat history pages */
 window.addEventListener('load', function () {
     if (document.getElementById('mw-history-compare')) {
