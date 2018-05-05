@@ -2,12 +2,18 @@
     {{! TODO: RTL version conditional on $data['rtl'] }}
     {{#if prebodyhtml}}<div>{{{prebodyhtml}}}</div>{{/if}}
     {{! WORKAROUND: can't add classes to <body>, so using a wrapper div }}
-    <div id="body-wrapper" class="uk-grid uk-margin-auto uk-margin-top">
+    <div id="body-wrapper" class="uk-grid uk-margin-auto">
         <header id="top-bar" class="uk-width-1-1 uk-grid uk-margin-bottom">
-            <div id="logo" class="uk-logo uk-margin-small-right">{{{logo}}}</div>
-            <div id="page-title" class="uk-margin-small-top uk-padding-remove uk-margin-small-left">
-                <h1 class="uk-margin-remove-bottom"><a href={{{content_navigation.namespaces.main.href}}} class="uk-h1">{{title}}</a></h1>
-                <p class="uk-margin-remove-top uk-text-right" style="font-style: italic;">{{sitename}}</p>
+            <div class="uk-width-expand">
+                {{! filler to push #logo and #page-title to the right }}
+            </div>
+            <div id="logo" class="uk-logo">{{{logo}}}</div>
+            <div id="page-title" class="uk-padding-remove uk-margin-small-left">
+                <h1 class="uk-h3 uk-margin-remove-bottom">
+                    <a href={{{content_navigation.namespaces.main.href}}}>{{title}}</a>
+                    <span> - </span>
+                    <p style="font-style: italic;">{{sitename}}</p>
+                </h1>
             </div>
             <div class="uk-width-expand">
                 {{! filler to push #tools to the right }}
