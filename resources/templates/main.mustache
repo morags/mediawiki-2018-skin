@@ -26,7 +26,7 @@
             {{! TODO: Restrucutre menus for JS-less clients using <noscript> tags}}
             <nav id="tools" class="uk-navbar-container uk-navbar-transparent uk-padding-remove-left " uk-navbar>
                 <ul class="uk-navbar-nav">
-                    <li id="site-tools">
+                    <li id="site-tools" class="tool">
                         <a href="{{{nav_urls.info.href}}}" title="{{nav_urls.info.text}}" uk-icon="icon: home"></a>
                         <div class="uk-navbar-dropdown">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
@@ -34,7 +34,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li id="page-tools">
+                    <li id="page-tools" class="tool">
                         <a href="{{{content_navigation.views.edit.href}}}" title="{{content_navigation.views.edit.text}}" uk-icon="icon: pencil"></a>
                         <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">     {{! BUG: uk-navbar-dropdown isn't 2-columns wide }}
                             {{! TODO: Add code to remove some of these and modify the namespace displayed in h1 for the rest (sp. policy, guideline and essay) }}
@@ -68,7 +68,7 @@
                             </div>                        
                         </div>
                     </li>
-                    <li id="user-tools">
+                    <li id="user-tools" class="tool">
                         <a href="{{{userpageurl}}}" title="{{userpage}}" uk-icon="icon: user"></a>      {{! TODO: Add notification for new talk page messages (using $data['newtalk']) }}
                         <div class="uk-navbar-dropdown">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
@@ -81,7 +81,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li id="site-search">
+                    <li id="site-search" class="tool">
                         {{! TODO: Add option to search current article with prefix:\{\{\{title\}\}\}/ }}
                         <a href="{{{searchaction}}}" title="{{searchtitle}}" uk-icon="icon: search"></a>
                         <div class="uk-navbar-dropdown">
