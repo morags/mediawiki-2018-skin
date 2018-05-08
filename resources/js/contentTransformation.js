@@ -26,6 +26,13 @@ window.addEventListener('load', function () {
         $toc.find('.toctoggle').attr('hidden', '');
         $toc.find('>ul').addClass('uk-nav uk-nav-default uk-margin-remove-top')
             .attr('uk-scrollspy-nav', 'closest: li; scroll: true;'); // BUG: Scrollspy isn't working (uikit#3100)
+        // Useful for tab navigation
+        $toc.find('>ul').prepend(`
+            <li class="toclevel-0 tocsection-0 uk-parent">
+            <a href="#content">
+                <span class="tocnumber"></span>
+                <span class="toctext">Introduction</span>
+            </a></li>`);
         $toc.find('.toclevel-1').addClass('uk-parent');
         $toc.find('.toclevel-1>ul').addClass('uk-nav-sub');
     }
@@ -122,10 +129,10 @@ window.addEventListener('load', function () {
         $table = $('table').addClass('uk-table uk-table-divider uk-table-hover uk-table-justify uk-table-small uk-text-small tablesorter');
 
         // TODO: Add more tools to the history tools menu (next to the "undo")
-        
+
         // TODO: Make sure this sorts properly at the beginning of a month
         $table.tablesorter();
-      
+
     };
 });
 
@@ -154,15 +161,15 @@ window.addEventListener('load', function () {
         var caller = $(this).next();
 
         $.getJSON('https://en.wikipedia.org/api/rest_v1/page/summary/' + $(this)[0].title)
-        .done(function (res) {
-            caller.find('h2').html(res.title);
-            if (res.type != 'no-extract') {
-                caller.find('p').html(res.extract);
-            };
-            caller.find('p').html('No extract available!');     // TODO: Add "warning" icon for policy pages, and "info" icon for guideline pages
-        })
-        .fail(function (res, status, err) {
-            caller.find('p').html('Article not found!<br>Reason: ' + status + ', ' + err);
-        });
+            .done(function (res) {
+                caller.find('h2').html(res.title);
+                if (res.type != 'no-extract') {
+                    caller.find('p').html(res.extract);
+                };
+                caller.find('p').html('No extract available!');     // TODO: Add "warning" icon for policy pages, and "info" icon for guideline pages
+            })
+            .fail(function (res, status, err) {
+                caller.find('p').html('Article not found!<br>Reason: ' + status + ', ' + err);
+            });
     };
 });
