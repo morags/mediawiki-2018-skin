@@ -31,12 +31,12 @@
         "skins.2018.js": {
             "position": "bottom",
             "scripts": [
-                "vendor/uikit/dist/js/uikit.js",
-                "vendor/uikit/dist/js/uikit-icons.js",
-                "vendor/clipboard.js/dist/clipboard.js",
-                "vendor/jquery/jquery-3.3.1.js",
-                "vendor/tablesorter/dist/js/jquery.tablesorter.js",
-                "vendor/mermaid/mermaid.js",
+                "node_modules/uikit/dist/js/uikit.js",
+                "node_modules/uikit/dist/js/uikit-icons.js",
+                "node_modules/clipboard/dist/clipboard.js",
+                "node_modules/jquery/dist/jquery.js",
+                "node_modules/tablesorter/dist/js/jquery.tablesorter.js",
+                "node_modules/mermaid/dist/mermaid.js",
                 "resources/js/contentTransformation.js"
             ]
         }

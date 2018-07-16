@@ -4,9 +4,16 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt": "1.0.1",
+    "grunt": "^1.0.3",
     "grunt-banana-checker": "0.6.0",
     "grunt-contrib-jshint": "1.1.0",
     "grunt-jsonlint": "1.1.0"
+  },
+  "dependencies": {
+    "clipboard": "^2.0.0",
+    "jquery": "^3.3.0",
+    "mermaid": "^8.0.0-rc.8",
+    "tablesorter": "^2.30.0",
+    "uikit": "^3.0.0-rc.10"
   }
 }
