@@ -183,8 +183,9 @@ window.addEventListener('load', function () {
                 caller.find('h2').html(res.title);
                 if (res.type != 'no-extract') {
                     caller.find('p').html(res.extract);
-                };
-                caller.find('p').html('No extract available!'); // TODO: Add "warning" icon for policy pages, and "info" icon for guideline pages
+                } else {
+                    caller.find('p').html('No extract available!'); // TODO: Add "warning" icon for policy pages, and "info" icon for guideline pages
+                }
             })
             .fail(function (res, status, err) {
                 caller.find('p').html('Article not found!<br>Reason: ' + status + ', ' + err);
