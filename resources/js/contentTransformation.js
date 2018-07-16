@@ -136,6 +136,24 @@ window.addEventListener('load', function () {
     };
 });
 
+/* Shift images to the right */
+window.addEventListener('load', function () {
+    var imgs = $('main .thumb, main .mermaid');
+    var prev = $('head');
+
+    imgs.each(function () {
+        $this = $(this);
+        var v_offest = $this.offset().top;
+        var height = $this.height();
+        cutoff = prev.offset().top + prev.height();
+        if (v_offest <= cutoff) {
+            var new_offset = cutoff + 20;
+            $this.css('top', `${new_offset}px`); // Default UIkit margin
+        }
+        prev = $this;
+    })
+});
+
 /* Preview Wikilinks */
 window.addEventListener('load', function () {
     var own = top.location.host.toString();
@@ -166,7 +184,7 @@ window.addEventListener('load', function () {
                 if (res.type != 'no-extract') {
                     caller.find('p').html(res.extract);
                 };
-                caller.find('p').html('No extract available!');     // TODO: Add "warning" icon for policy pages, and "info" icon for guideline pages
+                caller.find('p').html('No extract available!'); // TODO: Add "warning" icon for policy pages, and "info" icon for guideline pages
             })
             .fail(function (res, status, err) {
                 caller.find('p').html('Article not found!<br>Reason: ' + status + ', ' + err);
