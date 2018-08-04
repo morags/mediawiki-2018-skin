@@ -1,0 +1,17 @@
+{
+	"extends": "wikimedia",
+	"env": {
+		"browser": true,
+		"jquery": true
+	},
+	"globals": {
+		"mediaWiki": false,
+		"OO": false,
+        "module": false
+	},
+    "parserOptions": {
+        "ecmaVersion": 6
+    },
+	"rules": {
+	}
+}
