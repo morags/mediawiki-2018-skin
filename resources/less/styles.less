@@ -3,62 +3,62 @@
 @import (inline) "../../node_modules/tablesorter/css/less/theme.less";
 
 #top-bar {
-    height: 45px;
-    border-bottom: 1px solid @global-muted-color;
-    box-sizing: content-box;
-    
-    > *,
-    .tool > a {
-        height: 45px;
-    }
+	height: 45px;
+	border-bottom: 1px solid @global-muted-color;
+	box-sizing: content-box;
 
-    img {
-        height: 42px;
-    }
+	> *,
+	.tool > a {
+		height: 45px;
+	}
 
-    #page-title {
-        margin-top: 5px;
-        
-        * {
-            display: inline;
-        }
-    }
+	img {
+		height: 42px;
+	}
+}
+
+#page-title {
+	margin-top: 5px;
+
+	* {
+		display: inline;
+	}
 }
 
 #site-search form input {
-    border-bottom: 1px solid @global-border;
+	border-bottom: 1px solid @global-border;
 }
 
 #content .mw-editsection {
-    margin-left: 0.5em;
+	margin-left: 0.5em;
 }
 
 .hook-table-small() {
-    // WORKAROUND: Tablesorter messes up with the fonts; this is taken directly from uikit/src/less/components/base
-    font-family: @base-body-font-family;
-    font-size: @base-body-font-size;
-    font-weight: @base-body-font-weight;
-    line-height: @base-body-line-height;
-    /* 2 */
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    /* 3 */
-    background: @base-body-background;
-    color: @base-body-color;
+	// WORKAROUND: Tablesorter messes up with the fonts; this is taken directly from uikit/src/less/components/base
+	font-family: @base-body-font-family;
+	font-size: @base-body-font-size;
+	font-weight: @base-body-font-weight;
+	line-height: @base-body-line-height;
+	/* 2 */
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	/* 3 */
+	background: @base-body-background;
+	color: @base-body-color;
 
-    .uk-text-small();
-    padding: 1px;
+	.uk-text-small();
+	padding: 1px;
 }
 
 .hook-table-header-cell() {
-    text-align: center;
+	text-align: center;
 }
 
 main .thumb,
 main .mermaid {
-    .uk-width-1-4();
-    position: absolute;
-    right: 0px;
-    border: 0px;
-    box-sizing: border-box;
+	.uk-width-1-4();
+	position: absolute;
+	right: 0;
+	border: 0;
+	box-sizing: border-box;
 }
