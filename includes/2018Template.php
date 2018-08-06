@@ -24,7 +24,8 @@ class Skin2018Template extends BaseTemplate {
 		echo $this->get( 'headelement' );
 		
 		// Output <body> using Mustache
-		$templateParser = new TemplateParser(  __DIR__ . '/resources/templates' );
+        $templateParser = new TemplateParser(  __DIR__ . '/../resources/templates' );
+
 		echo $templateParser->processTemplate(
 			'main', $this->data
 		);

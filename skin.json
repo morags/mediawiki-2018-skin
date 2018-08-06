@@ -18,7 +18,6 @@
     "ResourceModules": {
         "skins.2018": {
             "class": "ResourceLoaderSkinModule",
-            "position": "top",
             "styles": {
                 "resources/less/styles.less": {
                     "media": "screen"
@@ -29,7 +28,6 @@
             }
         },
         "skins.2018.js": {
-            "position": "bottom",
             "scripts": [
                 "node_modules/uikit/dist/js/uikit.js",
                 "node_modules/uikit/dist/js/uikit-icons.js",
@@ -46,8 +44,8 @@
         "remoteSkinPath": "2018"
     },
     "AutoloadClasses": {
-        "Skin2018": "2018.skin.php",
-        "Skin2018Template": "2018Template.php"
+        "Skin2018": "includes/2018.skin.php",
+        "Skin2018Template": "includes/2018Template.php"
     },
     "manifest_version": 1
 }

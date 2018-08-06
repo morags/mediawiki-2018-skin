@@ -5,8 +5,9 @@
  * @ingroup Skins
  */
 class Skin2018 extends SkinTemplate {
-	public $skinname = '2018', $stylename = '2018',
-		$template = 'Skin2018Template', $useHeadElement = true;
+	public $skinname = '2018';
+	public $stylename = '2018';
+	public $template = 'Skin2018Template';
 
 	/**
 	 * Add CSS via ResourceLoader
