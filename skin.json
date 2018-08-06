@@ -44,8 +44,8 @@
         "remoteSkinPath": "2018"
     },
     "AutoloadClasses": {
-        "Skin2018": "includes/2018.skin.php",
-        "Skin2018Template": "includes/2018Template.php"
+        "Skin2018": "includes/Skin2018.php",
+        "Skin2018Template": "includes/Skin2018Template.php"
     },
     "manifest_version": 1
 }

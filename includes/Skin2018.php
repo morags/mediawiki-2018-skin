@@ -15,19 +15,18 @@ class Skin2018 extends SkinTemplate {
 	 * @param $out OutputPage
 	 */
 	public function initPage( OutputPage $out ) {
-
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1.0' );
 
-		$out->addModuleStyles( array(
+		$out->addModuleStyles( [
 			// 'mediawiki.skinning.elements',
 			// 'mediawiki.skinning.content',
 			// 'mediawiki.skinning.interface',
 			'mediawiki.skinning.content.externallinks',
 			'skins.2018'
-		) );
-		$out->addModules( array(
+		 ] );
+		$out->addModules( [
 			'skins.2018.js'
-		) );
+		 ] );
 	}
 
 	/**
