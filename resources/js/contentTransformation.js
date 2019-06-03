@@ -32,7 +32,7 @@ window.addEventListener( 'load', function () {
 		// Useful for tab navigation
 		$toc.find( '>ul' ).prepend( `
 			<li class="toclevel-0 tocsection-0 uk-parent">
-			<a href="#content">
+			<a id="skip" href="#content">
 				<span class="tocnumber"></span>
 				<span class="toctext">Introduction</span>
 			</a></li>` );
@@ -54,7 +54,7 @@ window.addEventListener( 'load', function () {
 		$editMarkers.addClass( 'uk-invisible-hover uk-text-middle' );
 		$editMarkers.parent().addClass( 'uk-visible-toggle' );
 		$editMarkers.find( '>.mw-editsection-bracket' ).attr( 'hidden', '' );
-		$editMarkers.find( '>a' ).attr( 'uk-icon', 'icon: pencil' ).text( '' );
+		$editMarkers.find( '>a' ).attr( 'uk-icon', 'icon: pencil' ).attr( 'role', 'button' ).attr( 'aria-label', $( this ).attr( 'title' ) ).text( '' );
 	}
 } );
 
@@ -103,7 +103,7 @@ window.addEventListener( 'load', function () {
 						'<td>' + s( this, '.comment' ) + '</td>' +
 						'<td>' + s( this, '.mw-history-histlinks' ) + '</td>' +
 						'<td><span>' + $( this ).find( 'input' )[ 0 ].outerHTML + '</span><span>' + $( this ).find( 'input' )[ 1 ].outerHTML + '</span></td>' +
-						'<td><span uk-icon="icon: cog"></span><div class="uk-padding-small uk-text-center" uk-dropdown>' + s( this, '.mw-history-undo' ) + '</div></td>' +
+						'<td><span uk-icon="icon: cog" role="button" aria-haspopup="menu" title="Revision tools"></span><div class="uk-padding-small uk-text-center" uk-dropdown role="menu">' + s( this, '.mw-history-undo' ) + '</div></td>' +
 					'</tr>';
 		} );
 		$table.children().wrapAll( '<tbody />' );
@@ -166,7 +166,7 @@ window.addEventListener( 'load', function () {
 
 	$wikilinks.each( function () {
 		$( this ).after(
-			'<div class="uk-padding-small" uk-dropdown>' +
+			'<div class="uk-padding-small" uk-dropdown role="tooltip">' +
 				'<h2 class="uk-h4"></h2>' +
 				' <p>Loading summary...</p>' +
 			'</div>' );

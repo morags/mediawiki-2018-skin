@@ -25,21 +25,21 @@
             {{! TODO: Integrate $data['language_urls'] conditionally as a dropdown list }}
             {{! TODO: Restrucutre menus for JS-less clients using <noscript> tags}}
             <nav id="tools" class="uk-navbar-container uk-navbar-transparent uk-padding-remove-left " uk-navbar>
-                <ul class="uk-navbar-nav">
+                <ul class="uk-navbar-nav" role="toolbar">
                     <li id="site-tools" class="tool">
-                        <a href="{{{nav_urls.info.href}}}" title="{{nav_urls.info.text}}" uk-icon="icon: home"></a>
+                        <a href="{{{nav_urls.info.href}}}" title="{{nav_urls.info.text}}" role="button" aria-haspopup="menu" aria-label="{{nav_urls.info.text}}" uk-icon="icon: home"></a>
                         <div class="uk-navbar-dropdown">
-                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <ul class="uk-nav uk-navbar-dropdown-nav" role="menu">
                                 {{#sidebar.navigation}}<li><a href="{{{href}}}">{{text}}</a></li>{{/sidebar.navigation}}
                             </ul>
                         </div>
                     </li>
                     <li id="page-tools" class="tool">
-                        <a href="{{{content_navigation.views.edit.href}}}" title="{{content_navigation.views.edit.text}}" uk-icon="icon: pencil"></a>
+                        <a href="{{{content_navigation.views.edit.href}}}" title="{{content_navigation.views.edit.text}}" role="button" aria-haspopup="menu" aria-label="{{content_navigation.views.edit.text}}" uk-icon="icon: pencil"></a>
                         <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">     {{! BUG: uk-navbar-dropdown isn't 2-columns wide }}
                             {{! TODO: Add code to remove some of these and modify the namespace displayed in h1 for the rest (sp. policy, guideline and essay) }}
                             {{#if indicators}}<div uk-grid>{{{indicators}}}</div>{{/if}}
-                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <ul class="uk-nav uk-navbar-dropdown-nav" role="menu">
                                 <li>{{lastmod}}</li>
                             </ul>
                             <div class="uk-navbar-dropdown-grid uk-child-width-1-2" uk-grid>
@@ -69,9 +69,9 @@
                         </div>
                     </li>
                     <li id="user-tools" class="tool">
-                        <a href="{{{userpageurl}}}" title="{{userpage}}" uk-icon="icon: user"></a>      {{! TODO: Add notification for new talk page messages (using $data['newtalk']) }}
+                        <a href="{{{userpageurl}}}" title="{{userpage}}" role="button" aria-haspopup="menu" aria-label="{{userpage}}" uk-icon="icon: user"></a>      {{! TODO: Add notification for new talk page messages (using $data['newtalk']) }}
                         <div class="uk-navbar-dropdown">
-                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <ul class="uk-nav uk-navbar-dropdown-nav" role="menu">
                                 <li><a href="{{{personal_urls.userpage.href}}}">{{personal_urls.userpage.text}}</a></li>
                                 <li><a href="{{{personal_urls.mytalk.href}}}">{{personal_urls.mytalk.text}}</a></li>
                                 <li><a href="{{{personal_urls.watchlist.href}}}">{{personal_urls.watchlist.text}}</a></li>
@@ -83,11 +83,11 @@
                     </li>
                     <li id="site-search" class="tool">
                         {{! TODO: Add option to search current article with prefix:\{\{\{title\}\}\}/ }}
-                        <a href="{{{searchaction}}}" title="{{searchtitle}}" uk-icon="icon: search"></a>
+                        <a href="{{{searchaction}}}" title="{{searchtitle}}" role="button" aria-haspopup="dialog" aria-label="{{searchtitle}}" uk-icon="icon: search"></a>
                         <div class="uk-navbar-dropdown">
-                            <form id="searchform" class="uk-search" action="{{{searchaction}}}">
+                            <form id="searchform" class="uk-search" action="{{{searchaction}}}" role="search">
                                 <span class="uk-search-icon-flip" uk-search-icon></span>
-                                <input class="uk-search-input" type="search" name="search" placeholder="Search&hellip;" autofocus>
+                                <input class="uk-search-input" type="search" name="search" placeholder="Search&hellip;" aria-label="Search string" autofocus>
                             </form>
                         </div>
                     </li>
@@ -112,7 +112,7 @@
         <div class="uk-width-1-4">
             {{! WORKAROUND: uikit#2774 (see below) }}
         </div>
-        <div id="bottom-bar" class="uk-width-1-2 uk-margin-small-top">
+        <footer id="bottom-bar" class="uk-width-1-2 uk-margin-small-top">
             <hr class="uk-divider-icon uk-margin-small-bottom">
             {{! BUG: uk-sticky="bottom: #bottom-bar" doesn't work, so #toc overlays #bottom-bar if it's long enough (uikit#2774) }}
             <div class="uk-container uk-text-center">
@@ -124,6 +124,6 @@
                 </div>
                 {{#if credits}}<div>{{{poweredbyico}}}</div>{{/if}}
             </div>
-        </div>
+        </footer>
     </div>
 </body>
