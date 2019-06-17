@@ -14,6 +14,15 @@ We intend to do that by:
 * Segmenting content into [Schema](https://schema.org/)-friendly, HTML5 semantic elements
 * Implementing a [progressively enhancing](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement) design with a mix of server-side and client-side logic, with as much of the presentation as possible handled by CSS
 
+## Features
+
+![Design overview](/screenshots/overview.png)
+![Design breakdown](/screenshots/breakdown.png)
+![Preview feature](screenshots/preview_pop-ups.png)
+![Embedded charts](screenshots/mermaid_chart.png)
+![Tools menu](screenshots/tools_menu.png)
+![Sortable page history](screenshots/history.png)
+
 ## Installation
 
 ### Prerequisites
