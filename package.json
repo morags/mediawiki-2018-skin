@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "clipboard": "^2.0.0",
-    "jquery": "^3.3.0",
+    "jquery": "^3.5.0",
     "mermaid": "^8.0.0-rc.8",
     "tablesorter": "^2.30.0",
     "uikit": "^3.0.0-rc.10"
