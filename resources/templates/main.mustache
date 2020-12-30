@@ -57,7 +57,7 @@
                                 </div>
                                 <div>
                                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                                        {{#each watch_indicator}}<li><a href="{{{href}}}">{{text}}</a></li>{{/watch_indicator}}
+                                        {{#watch_indicator}}<li><a href="{{{href}}}">{{text}}</a></li>{{/watch_indicator}}
                                         <li><a id="copy-permalink" data-clipboard-text="{{{serverurl}}}{{{nav_urls.permalink.href}}}">{{nav_urls.permalink.text}}</a></li>
                                         <li><a href="{{{nav_urls.upload.href}}}">Upload file</a></li>
                                         <li><a href="{{{content_navigation.actions.move.href}}}">{{content_navigation.actions.move.text}}</a></li>

@@ -8,7 +8,22 @@
     "license-name": "MIT",
     "type": "skin",
     "ValidSkinNames": {
-        "2018": "2018"
+        "s2018": {
+            "class": "Skin2018",
+            "args": [
+                {
+                    "name": "2018",
+                    "responsive": true,
+                    "styles": [
+                        "mediawiki.skinning.content.externallinks",
+                        "skins.2018"
+                    ],
+                    "scripts": [
+                        "skins.2018.js"
+                    ]
+                }
+            ]
+        }
     },
     "MessagesDirs": {
         "2018": [
@@ -47,5 +62,5 @@
         "Skin2018": "includes/Skin2018.php",
         "Skin2018Template": "includes/Skin2018Template.php"
     },
-    "manifest_version": 1
+    "manifest_version": 2
 }
