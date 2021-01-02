@@ -12,10 +12,10 @@ class Skin2018Template extends BaseTemplate {
 		// Rearrange parts of $this->data for easier handling in the template
 		unset( $this->data['nav_urls']['mainpage'] );
 		if ( isset( $this->data['content_navigation']['actions']['watch'] ) ) {
-			$this->data['watch_indicator']['watch'] = $this->data['content_navigation']['actions']['watch'];
+			$this->data['watch_indicator'] = $this->data['content_navigation']['actions']['watch'];
 			unset( $this->data['content_navigation']['actions']['watch'] );
 		} else {
-			$this->data['watch_indicator']['unwatch'] = $this->data['content_navigation']['actions']['unwatch'];
+			$this->data['watch_indicator'] = $this->data['content_navigation']['actions']['unwatch'];
 			unset( $this->data['content_navigation']['actions']['unwatch'] );
 		}
 
