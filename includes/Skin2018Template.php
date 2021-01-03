@@ -14,7 +14,7 @@ class Skin2018Template extends BaseTemplate {
 		if ( isset( $this->data['content_navigation']['actions']['watch'] ) ) {
 			$this->data['watch_indicator'] = $this->data['content_navigation']['actions']['watch'];
 			unset( $this->data['content_navigation']['actions']['watch'] );
-		} else {
+		} elseif ( isset( $this->data['content_navigation']['actions']['unwatch'] ) ){
 			$this->data['watch_indicator'] = $this->data['content_navigation']['actions']['unwatch'];
 			unset( $this->data['content_navigation']['actions']['unwatch'] );
 		}
