@@ -11,7 +11,8 @@
 	},
     "parserOptions": {
         "ecmaVersion": 6
-    },
+	},
+	"ignorePatterns": ["resources/js/dist"],
 	"rules": {
 	}
 }
