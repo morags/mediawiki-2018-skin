@@ -50,7 +50,7 @@
                 "node_modules/jquery/dist/jquery.js",
                 "node_modules/tablesorter/dist/js/jquery.tablesorter.js",
                 "node_modules/mermaid/dist/mermaid.js",
-                "resources/js/contentTransformation.js"
+                "resources/js/dist/contentTransformation.js"
             ]
         }
     },

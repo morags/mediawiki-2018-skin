@@ -39,7 +39,7 @@ From your MediaWiki root, run the following commands:
 
 ```
 git clone https://gitlab.com/morags/mediawiki-2018-skin.git skins && cd skins/2018
-npm install
+npm install && npm run build
 ```
 
 ### Enabling the skin in MediaWiki

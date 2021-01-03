@@ -1,9 +1,13 @@
 {
   "private": true,
   "scripts": {
+    "build": "babel resources/js/src -d resources/js/dist",
     "test": "grunt test"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "eslint-config-wikimedia": "^0.6.0",
     "grunt": "^1.3.0",
     "grunt-banana-checker": "0.6.0",
@@ -16,7 +20,7 @@
   "dependencies": {
     "clipboard": "^2.0.0",
     "jquery": "^3.5.1",
-    "mermaid": "^8.2.3",
+    "mermaid": "^8.8.4",
     "tablesorter": "^2.30.0",
     "uikit": "^3.0.0-rc.10"
   }
