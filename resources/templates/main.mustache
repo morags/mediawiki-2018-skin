@@ -38,7 +38,7 @@
                         <a href="{{{content_navigation.views.edit.href}}}" title="{{content_navigation.views.edit.text}}" role="button" aria-haspopup="menu" aria-label="{{content_navigation.views.edit.text}}" uk-icon="icon: pencil"></a>
                         <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">     {{! BUG: uk-navbar-dropdown isn't 2-columns wide }}
                             {{! TODO: Add code to remove some of these and modify the namespace displayed in h1 for the rest (sp. policy, guideline and essay) }}
-                            {{#if indicators}}<div uk-grid>{{{indicators}}}</div>{{/if}}
+                            {{#if watch_indicator}}<div uk-grid><a href={{{watch_indicator.href}}}>{{{watch_indicator.text}}}</a></div>{{/if}}
                             <ul class="uk-nav uk-navbar-dropdown-nav" role="menu">
                                 <li>{{lastmod}}</li>
                             </ul>
