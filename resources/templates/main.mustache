@@ -120,7 +120,7 @@
                 {{! TODO: Incorporate <div> into the conditional instead of always displaying it }}
                 <div>
                     {{#if credits}}<span>{{{credits}}}</span>{{/if}}
-                    {{#if copyright}}<span>{{{copyrightico}}}{{{copyright}}}</span>{{/if}}
+                    {{#if copyrightico}}<span><img src={{{copyrightico.src}}} alt={{{copyrightico.alt}}} ></span>{{/if}}{{#if copyright}}<span>{{{copyright}}}</span>{{/if}}
                 </div>
                 {{#if credits}}<div>{{{poweredbyico}}}</div>{{/if}}
             </div>
