@@ -19,9 +19,7 @@
   },
   "dependencies": {
     "clipboard": "^2.0.0",
-    "jquery": "^3.5.1",
     "mermaid": "^8.8.4",
-    "tablesorter": "^2.30.0",
     "uikit": "^3.0.0-rc.10"
   }
 }
