@@ -172,7 +172,7 @@ $(window).ready(function () {
 			'</div>');
 	});
 
-	$wikilinks.hover(function () {
+	$wikilinks.mouseenter(function () {
 		var caller = $(this).next();
 
 		$.getJSON('https://en.wikipedia.org/api/rest_v1/page/summary/' + $(this)[0].title)
