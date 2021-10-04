@@ -44,6 +44,7 @@
         },
         "skins.2018.js": {
             "scripts": [
+                "node_modules/unpoly/unpoly.es5.js",
                 "node_modules/uikit/dist/js/uikit.js",
                 "node_modules/uikit/dist/js/uikit-icons.js",
                 "node_modules/clipboard/dist/clipboard.js",

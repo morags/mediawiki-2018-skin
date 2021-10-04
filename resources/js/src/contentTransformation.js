@@ -189,3 +189,16 @@ $(window).ready(function () {
 			});
 	});
 });
+
+/* Unpoly default configuration */
+$(window).ready(function () {
+	up.fragment.config.mainTargets = [
+		'#page-title',
+		'#tools',
+		'#left-col',
+		'#content',
+		'#right-col'
+	]
+	up.link.config.followSelectors.push('a[href]');
+	up.boot();
+});
