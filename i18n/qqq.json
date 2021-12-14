@@ -1,7 +1,7 @@
 {
     "@metadata": {
-        "authors": [ "..." ]
+        "authors": [ "Morag S." ]
     },
-    "skinname-example": "{{optional}}",
-    "example-desc": "{{desc|what=skin|name=Example|url=https://www.mediawiki.org/wiki/Skin:Example}}"
+    "skinname-2018": "{{optional}}",
+    "2018-desc": "{{desc|what=skin|name=2018|url=https://www.mediawiki.org/wiki/Skin:2018}}"
 }
