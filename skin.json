@@ -3,7 +3,7 @@
     "version": "0.1",
     "author": "Morag S.",
     "url": "https://www.mediawiki.org/wiki/Skin:2018",
-    "descriptionmsg": "A contemporary theme utilizing off-the-shelf components for a clean UI and excellent article readability",
+    "descriptionmsg": "2018-desc",
     "namemsg": "skinname-2018",
     "license-name": "MIT",
     "type": "skin",
