@@ -1,4 +1,4 @@
-<!-- start -->
+<!-- <body> outputted by SkinMustache -->
     {{! TODO: Replace UIkit with something that's more CSS and less JS, for better default usability https://github.com/troxler/awesome-css-frameworks }}
     {{! TODO: Better mermaid integration to remove need for <pre> tags }}
     {{! TODO: Better image handling to prevent overrun }}
@@ -27,7 +27,7 @@
             <nav id="tools" class="uk-navbar-container uk-navbar-transparent uk-padding-remove-left " uk-navbar>
                 <ul class="uk-navbar-nav" role="toolbar">
                     <li id="site-tools" class="tool">
-                        <a href="{{{sidebar.navigation.1.href}}}" title="{{sidebar.navigation.1.text}}" role="button" aria-haspopup="menu" aria-label="{{sidebar.navigation.1.text}}" uk-icon="icon: home"></a>
+                        <a href="{{{nav_urls.info.href}}}" title="{{nav_urls.info.text}}" role="button" aria-haspopup="menu" aria-label="{{nav_urls.info.text}}" uk-icon="icon: home"></a>
                         <div class="uk-navbar-dropdown">
                             <ul class="uk-nav uk-navbar-dropdown-nav" role="menu">
                                 {{#sidebar.navigation}}<li><a href="{{{href}}}">{{text}}</a></li>{{/sidebar.navigation}}
@@ -35,16 +35,10 @@
                         </div>
                     </li>
                     <li id="page-tools" class="tool">
-                        {{! Use Visual Editor if available, otherwise regular text field}}
-                        {{#content_navigation.views.ve-edit}}
-                            <a id=ca-edit href="{{{content_navigation.views.ve-edit.href}}}" title="{{content_navigation.views.ve-edit.text}}" role="button" aria-haspopup="menu" aria-label="{{content_navigation.views.ve-edit.text}}" uk-icon="icon: pencil"></a>
-                        {{/content_navigation.views.ve-edit}}
-                        {{^content_navigation.views.ve-edit}}
-                            <a id=ca-edit href="{{{content_navigation.views.edit.href}}}" title="{{content_navigation.views.edit.text}}" role="button" aria-haspopup="menu" aria-label="{{content_navigation.views.edit.text}}" uk-icon="icon: pencil"></a>
-                        {{/content_navigation.views.ve-edit}}
+                        <a href="{{{content_navigation.views.edit.href}}}" title="{{content_navigation.views.edit.text}}" role="button" aria-haspopup="menu" aria-label="{{content_navigation.views.edit.text}}" uk-icon="icon: pencil"></a>
                         <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">     {{! BUG: uk-navbar-dropdown isn't 2-columns wide }}
                             {{! TODO: Add code to remove some of these and modify the namespace displayed in h1 for the rest (sp. policy, guideline and essay) }}
-                            {{#if watch_indicator}}<div uk-grid><a href={{{watch_indicator.href}}}>{{{watch_indicator.text}}}</a></div>{{/if}}
+                            {{#if indicators}}<div uk-grid>{{{indicators}}}</div>{{/if}}
                             <ul class="uk-nav uk-navbar-dropdown-nav" role="menu">
                                 <li>{{lastmod}}</li>
                             </ul>
@@ -100,36 +94,5 @@
                 </ul>
             </nav>
         </header>
-        <nav id="left-col" class="uk-width-1-4">
-        </nav>
-        <main id="content" class="uk-width-1-2">
-            {{#if sitenotice}}<div class="uk-width-1-1 uk-alert">{{{sitenotice}}}</div>{{/if}}
-            {{#if undelete}}<div class="uk-width-1-1 uk-alert">{{{undelete}}}</div>{{/if}}      {{! TODO: Figure out what this does }}
-            {{! TODO: Limit .mw-editsection visibility toggle to header width instead of page width }}
-            {{! TODO: Add "Back to top" buttons to section headers }}
-            {{{bodycontent}}}
-            {{#if subtitle}}<div class="uk-width-1-1 uk-text-center uk-text-small">{{{subtitle}}}</div>{{/if}}                                  {{! TODO: Check if this can be moved somewhere else, eg. as a tools listing }}
-            {{#if catlinks}}<nav>{{{catlinks}}}</nav>{{/if}}                                                                                    {{! TODO: Move category links to side- or toolbar }}
-            {{#if dataAfterContent}}<div>{{{dataAfterContent}}}</div>{{/if}}
-        </main>
-        <div id="right-col" class="uk-width-1-4">
 
-        </div>
-        <div class="uk-width-1-4">
-            {{! WORKAROUND: uikit#2774 (see below) }}
-        </div>
-        <footer id="bottom-bar" class="uk-width-1-2 uk-margin-small-top">
-            <hr class="uk-divider-icon uk-margin-small-bottom">
-            {{! BUG: uk-sticky="bottom: #bottom-bar" doesn't work, so #toc overlays #bottom-bar if it's long enough (uikit#2774) }}
-            <div class="uk-container uk-text-center">
-                <div>{{{about}}} | {{{disclaimer}}} | {{{privacy}}}</div>
-                {{! TODO: Incorporate <div> into the conditional instead of always displaying it }}
-                <div>
-                    {{#if credits}}<span>{{{credits}}}</span>{{/if}}
-                    {{#if copyrightico}}<span><img src={{{copyrightico.src}}} alt={{{copyrightico.alt}}} ></span>{{/if}}{{#if copyright}}<span>{{{copyright}}}</span>{{/if}}
-                </div>
-                {{#if credits}}<div>{{{poweredbyico}}}</div>{{/if}}
-            </div>
-        </footer>
-    </div>
-<!-- end -->
+<!-- </body> outputted by SkinMustache -->
