@@ -20,7 +20,10 @@ class Skin2018Template extends BaseTemplate {
 		}
 
 		// Output <head>
-		echo $this->get( 'headelement' );
+		$pre139 = version_compare( MW_VERSION, '1.39', '<' );
+		if ( $pre139 ) {
+			echo $this->get( 'headelement' );
+		}
 
 		// Output <body> using Mustache
 		$templateParser = new TemplateParser( __DIR__ . '/../resources/templates' );
@@ -28,5 +31,9 @@ class Skin2018Template extends BaseTemplate {
 		echo $templateParser->processTemplate(
 			'main', $this->data
 		);
+		if ( $pre139 ) {
+			echo '</body></html>';
+		}
+
 	}
 }

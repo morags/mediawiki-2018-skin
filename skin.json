@@ -14,8 +14,8 @@
                 {
                     "name": "2018",
                     "responsive": true,
+                    "bodyOnly": true,
                     "styles": [
-                        "mediawiki.skinning.content.externallinks",
                         "skins.2018"
                     ],
                     "scripts": [
@@ -33,6 +33,10 @@
     "ResourceModules": {
         "skins.2018": {
             "class": "ResourceLoaderSkinModule",
+            "features": {
+                "content-links": true,
+                "content-links-external": true
+            },
             "styles": {
                 "resources/less/styles.less": {
                     "media": "screen"
