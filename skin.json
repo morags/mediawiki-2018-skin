@@ -7,6 +7,9 @@
     "namemsg": "skinname-2018",
     "license-name": "MIT",
     "type": "skin",
+    "requires": {
+        "MediaWiki": ">= 1.41.0"
+    },
     "ValidSkinNames": {
         "s2018": {
             "class": "Skin2018",
